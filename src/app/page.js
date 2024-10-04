@@ -4,6 +4,9 @@
 import styles from "./page.module.css";
 import React, { useEffect, useState } from 'react';
 import Delivery from './components/Delivery';
+import Inventory from "./components/Inventory";
+import Orders from "./components/Orders";
+import Shipment from "./components/Shipment";
 
 const Page = () => {
   const [tables, setTables] = useState([]);
@@ -17,7 +20,7 @@ const Page = () => {
         const data = await response.json();
 
         if (response.ok) {
-          setTables(data.deliveries); // Assuming your API returns an object with a `tables` property
+          setTables(data.tables); // Assuming your API returns an object with a `tables` property
         } else {
           setError(data.message); // Handle API errors
         }
@@ -44,7 +47,12 @@ const Page = () => {
       <h1>Database Tables</h1>
 
 
-      <Delivery />
+      <div className={styles.container}>
+        <Delivery />
+        <Inventory />
+        <Orders />
+        <Shipment />
+      </div>
     </div>
   );
 };
