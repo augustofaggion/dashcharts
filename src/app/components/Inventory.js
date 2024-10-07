@@ -45,3 +45,5 @@ const Inventory = () => {  // Corrected component declaration
 }
 
 export default Inventory;
+
+// Donut with d3
