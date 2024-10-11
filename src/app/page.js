@@ -7,6 +7,7 @@ import Delivery from './components/Delivery';
 import Inventory from "./components/Inventory";
 import Orders from "./components/Orders";
 import Shipment from "./components/Shipment";
+import Round from "./components/Round";
 
 const Page = () => {
   const [tables, setTables] = useState([]);
@@ -48,10 +49,11 @@ const Page = () => {
 
 
       <div className={styles.container}>
-        <Delivery />
-        <Inventory />
-        <Orders />
-        <Shipment />
+        {/* <Delivery /> */}
+        {/* <Inventory /> */}
+        {/* <Orders />
+        <Shipment /> */}
+        <Round />
       </div>
     </div>
   );

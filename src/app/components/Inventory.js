@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { PureComponent, useEffect, useState } from 'react';
+import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const Inventory = () => {  // Corrected component declaration
   const [inventories, setInventories] = useState([]);
@@ -30,17 +31,27 @@ const Inventory = () => {  // Corrected component declaration
     return <div>Error: {error}</div>
   }
 
+  const inventoryData = inventories.map((inventory) => ({
+    item_name: inventory.item_name,
+    quantity: inventory.quantity,
+    location: inventory.location,
+  }));
+
   return (
-    <div>
+    <>
       <h2>Inventory Table</h2>
-      {inventories.map((inventory) => (
-        <div key={inventory.item_id}>
-          <h3>{inventory.item_name}</h3>
-          <p>{inventory.quantity}</p>
-          <p>{inventory.location}</p>
-        </div>
-      ))}
-    </div>
+      <ResponsiveContainer width="100%" height="100%" aspect={4.0/2}>
+        <BarChart width={500} height={300} data={inventoryData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="item_name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="quantity" fill="#8884d8" />
+          <Bar dataKey="location" fill="#82ca9d" />
+        </BarChart>
+    </ResponsiveContainer>
+    </>
   );
 }
 
